@@ -1,15 +1,27 @@
-<!-- https://www.youtube.com/watch?v=qvypCd2Vl4s-->
+<!-- https://youtu.be/qvypCd2Vl4s?t=700-->
 
 <!DOCTYPE html>
 <html>
 
 <head>
   <title>Digital Clock</title>
+  <style type="text/CSS">
+  body{
+    background: #000;
+  }
+  .clock{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: #fff;
+  }
+  </style>
 
 </head>
 
 <body>
-  <div id="MyClockDisplay"></div>
+  <div id="MyClockDisplay" class="clock"></div>
   <script type="text/javascript">
 
     function showtime() {
@@ -17,12 +29,15 @@
       var h = date.getHours(); // 0 - 23
       var m = date.getMinutes(); // 0 - 59
       var s = date.getSeconds(); // 0 - 59
+      var session = "AM";
+
       if (h == 0) {
         h = 12;
       }
 
       if (h > 12) {
         h = h - 12;
+        session = "PM";
       }
       /*h = (h < 10) ? "0" + h : h;
       m = (m < 10) ? "0" + m : m;
@@ -39,7 +54,7 @@
       if (s < 10) {
         s = "0" + s;
       }
-      var time = h + ":" + m + ":" + s;
+      var time = h + ":" + m + ":" + s + " " + session;
       document.getElementById("MyClockDisplay").innerText = time;
       document.getElementById("MyClockDisplay").textContent = time;
 
